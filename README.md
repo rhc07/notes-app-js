@@ -39,3 +39,16 @@ Test: 2 + 2 is equal to 4
 ✔ Pass
 ```
 
+
+User Story 1
+# Task: Take information
+        # save the information
+        # be able to access the information (dynamically)
+
+how do I create a dynamic form in javascript?
+how do I save that information
+how can I access it without leaving the page
+
+User story - first 20 chars
+# Task: Pull first 20 chars from each notes in notes_arr
+      # how can I load the new layout without leaving the page
