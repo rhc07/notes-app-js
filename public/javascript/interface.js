@@ -9,7 +9,7 @@ var notes = [
   "blue bugs bite bushes",
   "I'm no longer scared of touchies",
   "Take the mango out, and push it to the moon",
-  "Please lord save our souls from fossilization",
+  "juice should only be jambad on thursdays",
   "A haiku, by Jai, Kasey, Rorie & Sandy"
 ]
 
