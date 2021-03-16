@@ -39,3 +39,32 @@ Test: 2 + 2 is equal to 4
 ✔ Pass
 ```
 
+### Node//HTTP-Server Set Up
+
+Installing Node
+In your terminal, run:
+```
+$ node -v
+```
+If you get a message that says node: command not found, run:
+```
+$ brew install node
+```
+npm will automatically be installed when you install node.
+
+HTTP-Server Set Up
+In your terminal, run:
+```
+npm install -g http-server
+```
+```
+http-server
+```
+Access the webpage by pasting one of the links in your browser.
+
+Skeleton Plan:
+
+1) http node server
+2) in node - interface.js
+3) index.html
+4) connect interface, index, and tests
