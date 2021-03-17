@@ -9,16 +9,18 @@
 </head>
 
 <body>
-  <h1>My Notes</h1>
+  <h1>Notes</h1>
 
   <div class="container">
-    <!-- <input type="text" id="note"></input> -->
+    <form id="note-submit">
+      <textarea id="note-content" cols="50" rows="5"></textarea>
+      <!-- <button id="note-submit" onclick="addNote()">Create</button> -->
+      <input type="submit" id="submit" value="Create">
+    </form>
 
-    <textarea name="" id="note" cols="50" rows="5"></textarea>
-    <button onClick="addNote()">Add</button>
+    <div id="notes"></div>
+
   </div>
-
-  <div class="notes"></div>
   
 </body>
 </html>
