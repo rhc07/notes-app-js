@@ -1,0 +1,10 @@
+body{
+  font-family: Arial;
+}
+.container {
+  max-width: 300px;
+  padding: 10px;
+}
+textarea {
+  border-radius: 4px;
+}
