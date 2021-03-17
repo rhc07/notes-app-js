@@ -1,10 +1,3 @@
-// var http = require('http');
-//
-// http.createServer(function (req, res) {
-//   res.writeHead(200, {'Content-Type': 'text/html'});
-//   res.end('Hello World!');
-// }).listen(8080);
-
 var notes = [
   "blue bugs bite bushes",
   "I'm no longer scared of touchies",
@@ -13,5 +6,12 @@ var notes = [
   "A haiku, by Jai, Kasey, Rorie & Sandy"
 ]
 
-for (i = 0; i < notes.length; i++)
-document.writeln(notes[i].substring(0,20) + "<br>");
+// https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_win_localstorage
+  if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("notes", notes);
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("notes");
+  } else {
+    document.getElementById("result").innerHTML = "Your notes were not saved because your browser does not support Web Storage.";
+  }
