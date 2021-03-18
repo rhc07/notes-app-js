@@ -13,11 +13,24 @@ class NoteManager {
 // Initialising NoteManager instance
 myNoteManager = new NoteManager;
 
+
+function createSubString() {
+  if(note.content.length < 20){
+    return note.content;
+  } else {
+    return note.content.substring(0,20)
+  }
+}
+
 // Prints the notes from the NoteManager onto the HTML
 function printNote(note, index) {
-  let substring = if note.content.length < 20 then let subtring = note.conten else `${note.content.substring(0,20)}...`;
+  let substring = `${note.content.substring(0,20)}...`;
   let string = `${note.content}`;
-  document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + substring + '</a>');
+  if(note.content.length < 20){
+    return document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + string + '</a>');
+  } else {
+    return document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + substring + '</a>');
+  }
 }
 
 // list = document.getElementById("notes");
