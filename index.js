@@ -31,6 +31,7 @@ function printNote(note, index) {
   } else {
     return document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + substring + '</a>');
   }
+  // createNoteListHandler();
 }
 
 // list = document.getElementById("notes");
@@ -87,7 +88,7 @@ function addNote() {
 // }
 
 // Event Handler
-function eventHandler() {
+function createNoteEventHandler() {
   let button = document.getElementById("submit");
   button.addEventListener('click', function(event) {
     event.preventDefault();
@@ -99,12 +100,20 @@ function eventHandler() {
 });
 }
 
-eventHandler();
 
-// --> draft - on click, select note id and retrieve full content from NoteManager to print on HTML
+function createNoteListHandler() {
+  let element = document.getElementById("index");
+  element.addEventListener('click', function(event) {
+  event.preventDefault();
+  element.innerHTML = string;})
+  }
 
 // let element = document.getElementById("index");
 // let string = "going on a really long run" // myNoteManager.notes[index]
 // element.addEventListener('click', function(event) {
 //   event.preventDefault();
 //   element.innerHTML = string;})
+
+
+
+createNoteEventHandler();
