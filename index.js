@@ -15,9 +15,16 @@ myNoteManager = new NoteManager;
 
 // Prints the notes from the NoteManager onto the HTML
 function printNote(note, index) {
-  let substring = if note.content.length < 20 then let subtring = note.conten else `${note.content.substring(0,20)}...`;
-  let string = `${note.content}`;
-  document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + substring + '</a>');
+  // --> the below is meant to display a substring only if content length is greater than 20 chars <-- 
+
+  // if (note.content.length < 20) {
+  //   let substring = note.content;
+  //   return substring;
+  // } else {
+  //   let substring = note.content.substring(0,20) + '...';
+  //   return substring;
+  // };
+  document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + note.content.substring(0,20) + '...' + '</a>');
 }
 
 // list = document.getElementById("notes");
@@ -88,10 +95,10 @@ function eventHandler() {
 
 eventHandler();
 
+// --> draft - on click, select note id and retrieve full content from NoteManager to print on HTML
 
-
-let element = document.getElementById("index");
-let string = "going on a really long run" // myNoteManager.notes[index]
-element.addEventListener('click', function(event) {
-  event.preventDefault();
-  element.innerHTML = string;})
+// let element = document.getElementById("index");
+// let string = "going on a really long run" // myNoteManager.notes[index]
+// element.addEventListener('click', function(event) {
+//   event.preventDefault();
+//   element.innerHTML = string;})
