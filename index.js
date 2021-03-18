@@ -14,14 +14,6 @@ class NoteManager {
 myNoteManager = new NoteManager;
 
 
-function createSubString() {
-  if(note.content.length < 20){
-    return note.content;
-  } else {
-    return note.content.substring(0,20)
-  }
-}
-
 // Prints the notes from the NoteManager onto the HTML
 function printNote(note, index) {
   let substring = `${note.content.substring(0,20)}...`;
@@ -31,7 +23,13 @@ function printNote(note, index) {
   } else {
     return document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + substring + '</a>');
   }
-  // createNoteListHandler();
+  noteListEventHandler(note,index);
+}
+
+
+function printOriginalNote(note, index) {
+  let string = `${note.content}`;
+  return document.getElementById("notes").innerHTML += (`<a href='#${note.content}' id="${index}" >` + string + '</a>');
 }
 
 // list = document.getElementById("notes");
@@ -87,7 +85,7 @@ function addNote() {
 //   printContent();
 // }
 
-// Event Handler
+// Event Handler <--- I changed the name so we could have two different handlers
 function createNoteEventHandler() {
   let button = document.getElementById("submit");
   button.addEventListener('click', function(event) {
@@ -100,13 +98,27 @@ function createNoteEventHandler() {
 });
 }
 
-
-function createNoteListHandler() {
-  let element = document.getElementById("index");
+// option 1
+function noteListEventHandler(note, index) {
+  let element = document.getElementById(index);
   element.addEventListener('click', function(event) {
   event.preventDefault();
-  element.innerHTML = string;})
+  noteList = myNoteManager.notes;
+  newNote = Object.values(noteList[index]);
+  element.innerHTML = newNote;})
   }
+  // line 106 pulls the original note from the Note object within an array
+
+
+// option 2
+// Another option I though could be worth looking at is the hashchange?
+function noteListEventHandler(note, index) {
+  let element = document.getElementById(index);
+  window.addEventListener("hashchange", printNoteAfter(note, index));
+  }
+
+
+
 
 // let element = document.getElementById("index");
 // let string = "going on a really long run" // myNoteManager.notes[index]
@@ -114,6 +126,6 @@ function createNoteListHandler() {
 //   event.preventDefault();
 //   element.innerHTML = string;})
 
-
+// Object.values(list[index number])
 
 createNoteEventHandler();
