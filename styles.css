@@ -1,10 +1,17 @@
 body{
   font-family: Arial;
 }
+textarea {
+  border-radius: 4px;
+}
+a {
+  display: block;
+}
 .container {
   max-width: 300px;
   padding: 10px;
+  margin-bottom: 10px;
 }
-textarea {
-  border-radius: 4px;
+#notes {
+  padding: 10px;
 }
