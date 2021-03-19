@@ -8,19 +8,26 @@ class Note {
 class Notelist {
   constructor() {
     // stores an array of Note objects. 
-      this.list = [new Note('this is note 1')];
+      this.list = [];
   };
+
   // creates a new Note object with the provided string. 
   add(content) {
     let note = new Note(content);
     this.list.push(note) ;
   };
 };
+
 // instantiate notelist
 let noteList = new Notelist ;
 
 // begins listning for the form submit event
 formSubmitEventHandler();
+
+// displays the notes full content when the note prview is clicked. 
+displayNoteWhenPreviewClicked();
+
+revertToDefaultDisplay(); 
 
 "=============================================================================="
 'the code below contains the apps internal methods' 
@@ -34,30 +41,44 @@ function getBoxContent() {
 // clears the preview list in the webpage
 function clearPreviews() {document.getElementById("notes").innerHTML = ""}
 
+// listens for a click on a selected note. The note will then be oopened in full. 
+function displayNoteWhenPreviewClicked() {
+  window.addEventListener('hashchange', function(event){
+    let ind = getIndexFromUrl(window.location);
+    displayNoteContent(ind);
+    // event.preventDefault()
+    // revertToDefaultDisplay();
+  });
+};
+function revertToDefaultDisplay(){
+  document.getElementById("revert").addEventListener('click', function(){
+    refreshContentPreviews();
+  })
+};
+  
+function displayNoteContent(ind) {
+  document.getElementById(`${ind}`).innerHTML = noteList.list[ind].fullContent ;
+};
+// gets the hash index value from the url 
+function getIndexFromUrl(location){
+  return parseInt(location.hash.split("#")[1]);
+};
+
 // refreshes the previews on the page. Taking info from the Notelist. 
 function refreshContentPreviews() { 
     clearPreviews();
     noteList.list.forEach(function(content, ind) {
-      document.getElementById("notes").innerHTML += (`<li id='${ind}'><a href='#${content.preview}'>` + content.preview + '</a></li>');
+      document.getElementById("notes").innerHTML += (
+        `<li id='${ind}'><a href='#${ind}'>` + content.preview + '</a></li>'
+      );
     });
+    window.location.hash = ""
 };
 
 // takes the box content and creates a Note object with it. Then saves into the notelist 
 function saveNote() {
     noteList.add(getBoxContent());
 };
-
-// listens for a click on a selected note. The note will then be oopened in full. 
-for(let i = 0; i < noteList.list.length; i++ ) {
-    let note = document.getElementById(`${i}`) ;
-    let noteText = '' 
-    note.addEventListener('click', function(event) {
-      noteText = noteList.list[i].fullContent;
-      document.getElementById(`${i}`).innterHTML = noteText ;
-    });
-
-};
-
  
 // listens for a 'form submit' event. upon this it saves the note and refreshes the previews 
 function formSubmitEventHandler() {
