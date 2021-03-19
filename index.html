@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single Page App</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+  <script defer src='jsClasses.js' ></script>
+</head>
+
+<body > 
+  <h1>Notes App</h1>
+  <div id="container">
+    <h2> Please Type Note Here </h2>
+    <form id="note-submit">
+      <textarea id="note-content" cols="50" rows="5"></textarea>
+      <!-- <button id="note-submit" onclick="addNote()">Create</button> -->
+      <input type="submit" id="submit" value="Save">
+    </form>
+    <button id='revert'> Revert</button>
+    <ul id="notes"><h2> Notes: </h2>
+    </ul>
+  </div>
+</html>

@@ -1,0 +1,24 @@
+body{
+  font-family: Arial;
+  border: solid red 2px; 
+  border-width: thick;
+  background: white;
+}
+.container {
+
+  padding: 10px;
+  
+}
+textarea {
+  border-radius: 4px;
+}
+h1 {
+  font-size: x-large;
+  font: verdana;
+  color: teal;
+}
+h2 {
+  font-size: large;
+  font: verdana;
+  color: teal;
+}
