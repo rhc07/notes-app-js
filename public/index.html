@@ -1,17 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Send Nodtes 📝</title>
-  </head>
+<head>
+  <title>Send Nodtes 📝</title>
+</head>
 
-  <body>
-    <section>
-      <h1>What's your Nodte?</h1>
-      <form> <!-- Note creation form -->
-        <input type="text" name="" value="">
-        <input type="submit" value="Save Note">   <!-- Note Submit button -->
-      </form>
-    </section>
-      <script src="javascript/interface.js"></script>
-  </body>
+<body>
+  <section>
+    <h1>What's your Nodte?</h1>
+    <form> <!-- Note creation form -->
+      <input type="text" name="" value="">
+      <input type="submit" value="Save Note">   <!-- Note Submit button -->
+    </form>
+  </section>
+  <script>
+
+  var notes = [
+    "blue bugs bite bushes",
+    "I'm no longer scared of touchies",
+    "Take the mango out, and push it to the moon",
+    "juice should only be jambad on thursdays",
+    "A haiku, by Jai, Kasey, Rorie & Sandy"
+  ]
+
+  function note(){
+    for (i = 0; i < notes.length; i++)
+    document.writeln(notes[i]);
+  }
+
+  fetch('https://makers-emojify.herokuapp.com/', {
+    method: 'POST',
+    body: JSON.stringify({
+		text: "Captain Africa :fire:",
+	}),
+	headers: {
+		'Content-type': 'application/json; charset=UTF-8'
+	}
+    }).then(function (response) {
+    	if (response.ok) {
+    		return response.json();
+    	}
+    	return Promise.reject(response);
+    }).then(function (data) {
+    	console.log(data);
+    }).catch(function (error) {
+    	console.warn('Something went wrong.', error);
+    });
+  </script>
+</body>
 </html>
