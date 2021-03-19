@@ -10,14 +10,12 @@ class Notelist {
     // stores an array of Note objects. 
       this.list = [];
   };
-
   // creates a new Note object with the provided string. 
   add(content) {
     let note = new Note(content);
     this.list.push(note) ;
   };
 };
-
 // instantiate notelist
 let noteList = new Notelist ;
 
@@ -68,11 +66,12 @@ function getIndexFromUrl(location){
 function refreshContentPreviews() { 
     clearPreviews();
     noteList.list.forEach(function(content, ind) {
-      document.getElementById("notes").innerHTML += (
-        `<li id='${ind}'><a href='#${ind}'>` + content.preview + '</a></li>'
-      );
+      if(content.fullContent.length <= 20) {document.getElementById("notes").innerHTML += (`<li id='${ind}'><a href='#${ind}'>` + content.preview + '</a></li>'
+      )}
+      else {document.getElementById("notes").innerHTML += (`<li id='${ind}'><a href='#${ind}'>` + content.preview + "..." + '</a></li>' )}; 
     });
     window.location.hash = ""
+    clearTextarea();
 };
 
 // takes the box content and creates a Note object with it. Then saves into the notelist 
@@ -90,3 +89,26 @@ function formSubmitEventHandler() {
      });
 };
 
+function clearTextarea() {
+  document.getElementById("note-content").value = "";
+};
+
+"experimental section"
+"=============================================================================="
+
+
+
+// function clearNotePad() {
+//   document.getElementById("notes").innerHTML = '';
+// }
+
+// Local storage management --> this is not working yet
+// function storeData() {
+//   localStorage.setItem('notes', JSON.stringify(myNoteManager.notes));
+// }
+// function retrieveData() {
+//   let retrievedData = localStorage.getItem('notes');
+//   let data = JSON.parse(retrievedData);
+//   data.forEach(note => myNoteManager.notes.push(new Note(note)));
+//   printContent();
+// }
